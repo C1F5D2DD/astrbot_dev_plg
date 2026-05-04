@@ -8,7 +8,7 @@ class MessageLoggerPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
 
-    @event_message_type(EventMessageType.ALL)
+    @filter.event_message_type(filter.EventMessageType.ALL)
     async def on_message(self, event: AstrMessageEvent):
         """收到任何消息时，用 logger 打印消息链"""
         message_chain = event.message_obj.message
