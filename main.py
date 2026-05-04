@@ -1,0 +1,17 @@
+from astrbot.api.all import *
+import logging
+
+logger = logging.getLogger(__name__)
+
+@register("astrbot_plugin_astrbot_dev_plg", "c1f5d2dd", "收到任何消息时打印消息链", "v1.0")
+class MessageLoggerPlugin(Star):
+    def __init__(self, context: Context):
+        super().__init__(context)
+
+    @event_message_type(EventMessageType.ALL)
+    async def on_message(self, event: AstrMessageEvent):
+        """收到任何消息时，用 logger 打印消息链"""
+        message_chain = event.message_obj.message
+        logger.info(f"收到消息链: {message_chain}")
+        # 不阻断消息，让其他插件继续处理
+        return None
