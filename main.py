@@ -22,8 +22,7 @@ class MessageLoggerPlugin(Star):
             logger.info("空消息链")
             return
 
-        logger.info(f"收到消息链:")
-        for msg in message:
-            logging.info(type(msg).__name__)
+        logger.info(f"收到消息链:{message}")
+
         # 不阻断消息，让其他插件继续处理
         return
