@@ -17,7 +17,7 @@ class MessageLoggerPlugin(Star):
     async def on_message(self, event: AstrMessageEvent):
         """收到任何消息时，用 logger 打印消息链"""
         try:
-            message_chain =  event.get_result().chain
+            message_chain =  event.message_obj.message
         except AttributeError:
             logger.info("空消息链")
             return
